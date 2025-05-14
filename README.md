@@ -25,79 +25,42 @@ To write a program to predict the marks scored by a student using the simple lin
 Program to implement the simple linear regression model for predicting the marks scored.
 ```
 import pandas as pd
-
 import numpy as np
-
 import matplotlib.pyplot as plt
-
 from sklearn.metrics import mean_absolute_error,mean_squared_error
-
 df = pd.read_csv(r"C:\Users\admin\Downloads\Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored-main\Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored-main\student_scores.csv",encoding='latin-1')
-
 print(df)
-
 df.head(0)
-
 df.tail(0)
-
 x = df.iloc[:,:-1].values
-
 print(x)
-
 y = df.iloc[:,1].values
-
 print(y)
-
 from sklearn.model_selection import train_test_split
-
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 1/3,random_state = 0)
-
 from sklearn.linear_model import LinearRegression
-
 regressor = LinearRegression()
-
 regressor.fit(x_train,y_train)
-
 y_pred = regressor.predict(x_test)
-
 print(y_pred)
-
 print(y_test)
-
 mae = mean_absolute_error(y_test,y_pred)
-
 print("MAE: ",mae)
-
 mse = mean_squared_error(y_test,y_pred)
-
 print("MSE: ",mse)
-
 rmse = np.sqrt(mse)
-
 print("RMSE: ",rmse)
-
 plt.scatter(x_train,y_train)
-
 plt.plot(x_train,regressor.predict(x_train) , color ='blue')
-
 plt.title("Hours vs Scores(training set)")
-
 plt.xlabel("Hours")
-
 plt.ylabel("Scores")
-
 plt.show()
-
 plt.scatter(x_test,y_test)
-
 plt.plot(x_test,regressor.predict(x_test),color = 'black')
-
 plt.title("Hours vs Scores(testing set)")
-
 plt.xlabel("Hours")
-
 plt.ylabel("Scores")
-
 plt.show()
 ```
 Developed by: Hemanth Kumar S
